@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForms.Autofac.MultiTenant.Minimal", "WebForms.Autofac.MultiTenant.Web\WebForms.Autofac.MultiTenant.Minimal.csproj", "{361502C1-73E5-4916-833D-AD00505BE09C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{361502C1-73E5-4916-833D-AD00505BE09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{361502C1-73E5-4916-833D-AD00505BE09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{361502C1-73E5-4916-833D-AD00505BE09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361502C1-73E5-4916-833D-AD00505BE09C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D21B025-7846-431E-9692-DB85E5C2B82C}
+	EndGlobalSection
+EndGlobal
