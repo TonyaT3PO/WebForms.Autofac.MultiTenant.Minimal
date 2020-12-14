@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="WebForms.Autofac.MultiTenant.Web.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="WebForms.Autofac.MultiTenant.Minimal.Global" Language="C#" %>

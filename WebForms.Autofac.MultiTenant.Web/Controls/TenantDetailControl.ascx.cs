@@ -1,4 +1,5 @@
 ﻿using Autofac.Integration.Web.Forms;
+using Autofac.Multitenant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,13 @@ namespace WebForms.Autofac.MultiTenant.Minimal.Controls
     public partial class TenantDetailControl : System.Web.UI.UserControl
     {
         public IDependency _dependency { get; set; }
+        public IDependencyConsumer _consumer { get; set; }
+
+        public ITenantIdentificationStrategy _tenantIdStrategy { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            TenantNameLabel.Text = _dependency.TenantName;
-            ConnectionStringLabel.Text = _dependency.ConnectionString;
+            TenantNameLabel.Text = _tenantIdStrategy.
+            ConnectionStringLabel.Text = _consumer.Dependency.GetType().Name;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebForms.AutoFac.MultiTenant.Web.Tenant1.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="WebForms.Autofac.MultiTenant.Minimal.Tenant1.Default" %>
 
 <%@ Register Src="~/Controls/TenantDetailControl.ascx" TagPrefix="uc1" TagName="TenantDetailControl" %>
 

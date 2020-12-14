@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Web;
 
-namespace WebForms.AutoFac.MultiTenant.Minimal
+namespace WebForms.Autofac.MultiTenant.Minimal
 {
     public class TenantIdentificationStrategy : ITenantIdentificationStrategy
     {
-
+        public object CurrentTenantId { get; set; }
 
         public bool TryIdentifyTenant(out object tenantId)
         {
@@ -36,7 +36,11 @@ namespace WebForms.AutoFac.MultiTenant.Minimal
             string[] urlParts = null;
             HttpContext httpContext = HttpContext.Current;
             urlParts = httpContext.Request.Url.Segments.Select(x => x.TrimEnd('/')).Skip(1).ToArray();
-            tenantName = urlParts[0];
+            if(urlParts.Count() > 0)
+            {
+                tenantName = urlParts[0];
+
+            }
 
             return tenantName;
         }

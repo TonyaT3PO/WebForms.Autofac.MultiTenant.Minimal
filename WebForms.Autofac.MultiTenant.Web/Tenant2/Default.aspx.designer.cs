@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebForms.AutoFac.MultiTenant.Web.Tenant2
+namespace WebForms.Autofac.MultiTenant.Minimal.Tenant2
 {
 
 

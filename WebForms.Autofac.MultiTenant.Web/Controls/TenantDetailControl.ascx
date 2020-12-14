@@ -3,6 +3,8 @@
 
 <div class="row">
         <div class="col">
-            <asp:Label ID="TenantNameLabel" runat="server" Text="Label"></asp:Label> - <asp:Label ID="ConnectionStringLabel" runat="server" Text="Label"></asp:Label>
+            <div><asp:Label ID="TenantNameLabel" runat="server" Text="Label"></asp:Label></div>
+            <div><asp:Label ID="ConnectionStringLabel" runat="server" Text="Label"></asp:Label></div>
+            <div><asp:Label ID="InstanceLabel" runat="server" Text="Label"></asp:Label></div>
         </div>
     </div>

@@ -8,11 +8,12 @@ using System.Web.Routing;
 using WebForms.Autofac.MultiTenant.Minimal;
 using WebForms.Autofac.MultiTenant.Minimal.Dependencies;
 
-namespace WebForms.AutoFac.MultiTenant.Minimal
+namespace WebForms.Autofac.MultiTenant.Minimal
 {
     public class Global : HttpApplication, IContainerProviderAccessor
     {
         private static IContainerProvider _containerProvider;
+        private static TenantIdentificationStrategy _tenantIdStrategy;
 
         public IContainerProvider ContainerProvider => _containerProvider;
 
@@ -26,7 +27,11 @@ namespace WebForms.AutoFac.MultiTenant.Minimal
         public void MultiTenantContainerConfig()
         {
             var builder = new ContainerBuilder();
-            var tenantIdStrategy = new TenantIdentificationStrategy();
+
+            builder.RegisterType<Consumer>().As<IDependencyConsumer>().InstancePerDependency();
+            builder.RegisterType<BaseDependency>().As<IDependency>().SingleInstance();
+
+            _tenantIdStrategy = new TenantIdentificationStrategy();
 
             //builder.RegisterType<Tenants>()
             //    .AsSelf()
@@ -35,24 +40,36 @@ namespace WebForms.AutoFac.MultiTenant.Minimal
             var tenants = new Tenants();
             var tenantList = tenants.TenantList();
 
-            builder.RegisterInstance(tenantIdStrategy).As<ITenantIdentificationStrategy>();
-            var multitenantContainer = new MultitenantContainer(tenantIdStrategy, builder.Build());
+            builder.RegisterInstance(_tenantIdStrategy).As<ITenantIdentificationStrategy>();
 
-            foreach (var tenant in tenantList)
-            {
-                multitenantContainer.ConfigureTenant(tenant.Name, b =>
-                {
-                    b.Register(d => new Dependency(tenant))
-                        .As<IDependency>();
+            
+            var multitenantContainer = new MultitenantContainer(_tenantIdStrategy, builder.Build());
 
-                    //b.Register(appContext => new AppDbContext(connectionString))
-                    //    .InstancePerTenant()
-                    //    .AsSelf();
+            multitenantContainer.ConfigureTenant('1', b => b.RegisterType<Tenant1Dependency>().As<IDependency>().InstancePerDependency());
 
-                    //b.RegisterType<CourseRepository>()
-                    //    .As<ICourseRepository>();
-                });
-            }
+
+            multitenantContainer.ConfigureTenant('2', b => b.RegisterType<Tenant2Dependency>().As<IDependency>().SingleInstance());
+
+
+            //foreach (var tenant in tenantList)
+            //{
+
+            //    multitenantContainer.ConfigureTenant(tenant.Name, b =>
+            //    {
+
+
+            //        //b.Register(d => new Dependency(tenant))
+            //        //    .As<IDependency>()
+            //        //    .InstancePerDependency();
+
+            //        //b.Register(appContext => new AppDbContext(connectionString))
+            //        //    .InstancePerTenant()
+            //        //    .AsSelf();
+
+            //        //b.RegisterType<CourseRepository>()
+            //        //    .As<ICourseRepository>();
+            //    });
+            //}
 
             _containerProvider = new ContainerProvider(multitenantContainer);
         }
