@@ -15,30 +15,12 @@ namespace WebForms.Autofac.MultiTenant.Minimal.Controls
     {
 
         /// <summary>
-        /// TenantNameLabel control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TenantNameLabel;
-
-        /// <summary>
-        /// ConnectionStringLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ConnectionStringLabel;
-
-        /// <summary>
-        /// InstanceLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label InstanceLabel;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

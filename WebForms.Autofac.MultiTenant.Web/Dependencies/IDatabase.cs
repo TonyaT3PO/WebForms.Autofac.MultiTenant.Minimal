@@ -2,8 +2,8 @@
 
 namespace WebForms.Autofac.MultiTenant.Minimal.Dependencies
 {
-    public interface IDependency
+    public interface IDatabase
     {
-        Dictionary<string, string> GetData();
+        Dictionary<string, string> GetTable();
     }
 }

@@ -13,14 +13,20 @@ namespace WebForms.Autofac.MultiTenant.Minimal.Controls
     
     public partial class TenantDetailControl : System.Web.UI.UserControl
     {
-        public IDependency _dependency { get; set; }
-        public IDependencyConsumer _consumer { get; set; }
+        public IDependency Dependency { get; set; }
 
-        public ITenantIdentificationStrategy _tenantIdStrategy { get; set; }
+        //public IDatabase Database { get; set; }
+
+        //public IConnectionStringProvider ConnectionStringProvider { get; set; }
+        //public TenantIdentificationStrategy _tenantIdStrategy { get; set; }
+        //public Tenants _tenants { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            TenantNameLabel.Text = _tenantIdStrategy.
-            ConnectionStringLabel.Text = _consumer.Dependency.GetType().Name;
+            var records = Dependency.GetData();
+            GridView1.DataSource = records;
+            GridView1.DataBind();
+            //TenantNameLabel.Text = _tenantIdStrategy.CurrentTenant;
+            //ConnectionStringLabel.Text = ConnectionStringProvider.ConnectionString();
         }
     }
 }

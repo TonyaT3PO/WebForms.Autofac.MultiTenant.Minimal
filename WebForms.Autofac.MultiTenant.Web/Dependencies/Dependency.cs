@@ -1,21 +1,22 @@
-﻿using WebForms.Autofac.MultiTenant.Minimal.Models;
+﻿using System.Collections.Generic;
 
 namespace WebForms.Autofac.MultiTenant.Minimal.Dependencies
 {
-    /// <summary>
-    /// Simple dependency implementation.
-    /// </summary>
+
     public class Dependency : IDependency
     {
-        public Dependency(Tenant tenant)
+        private readonly TenantIdentificationStrategy _tenantIdStrategy;
+        private readonly IDatabase _database;
+
+        public Dependency(TenantIdentificationStrategy tenantIdStrategy, IDatabase database)
         {
-            this.ConnectionString = tenant.Provider;
-            this.TenantName = tenant.Name;
+            _database = database;
+            _tenantIdStrategy = tenantIdStrategy;
         }
 
-      
-        public string ConnectionString { get; private set; }
-
-        public string TenantName { get; private set; }
+        public Dictionary<string, string> GetData()
+        {
+            return _database.GetTable();
+        }
     }
 }

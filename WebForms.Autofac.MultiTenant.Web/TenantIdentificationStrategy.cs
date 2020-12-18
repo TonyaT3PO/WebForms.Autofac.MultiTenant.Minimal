@@ -6,7 +6,7 @@ namespace WebForms.Autofac.MultiTenant.Minimal
 {
     public class TenantIdentificationStrategy : ITenantIdentificationStrategy
     {
-        public object CurrentTenantId { get; set; }
+        public string CurrentTenant { get; set; }
 
         public bool TryIdentifyTenant(out object tenantId)
         {
@@ -24,12 +24,13 @@ namespace WebForms.Autofac.MultiTenant.Minimal
                 // Happens at app startup in IIS 7.0
             }
 
-
-            tenantId = TenantName();
+            TenantName();
+            
+            tenantId = CurrentTenant;
             return tenantId != null;
         }
 
-        public static string TenantName()
+        public void TenantName()
         {
             string tenantName = "";
 
@@ -42,7 +43,7 @@ namespace WebForms.Autofac.MultiTenant.Minimal
 
             }
 
-            return tenantName;
+            CurrentTenant = tenantName;
         }
 
     }

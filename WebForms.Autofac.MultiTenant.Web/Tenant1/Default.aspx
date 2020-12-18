@@ -7,4 +7,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <uc1:TenantDetailControl runat="server" id="TenantDetailControl" />
+
+   
 </asp:Content>
